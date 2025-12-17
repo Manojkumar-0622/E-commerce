@@ -38,9 +38,7 @@ const Register = () => {
         },
         body : JSON.stringify(formData)
       });
-
       const data = response.json();
-
       
     } catch (error) {
       

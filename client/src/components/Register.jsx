@@ -32,7 +32,7 @@ const Register = () => {
     console.log(formData);
 
     try {
-      const response = await fetch('http://localhost:8080/login',{
+      const response = await fetch('http://localhost:3000/register',{
         method : 'POST',
         headers : {
           "Context-Type" : "application/json"

@@ -19,9 +19,8 @@ const App = () => {
               </ProtectedRoute>
              }
              />
-
       
-
+      
     </Routes>
     </>
   )

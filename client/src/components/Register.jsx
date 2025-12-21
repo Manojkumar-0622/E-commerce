@@ -7,6 +7,8 @@ import { FaGoogle, FaFacebookF } from "react-icons/fa";
 const Register = () => {
   {/*This is Register Page Components*/}
   const navicate = useNavigate();
+
+  const [message, setMessage] = useState();
   const [formData,setFromData] = useState({
     username : "",
     email : "",
@@ -21,8 +23,6 @@ const Register = () => {
       ...prev,
       [name] : value
     }))
-
-    console.log(value);
   }
 
   {/*Senting data to springboot backend*/}
@@ -30,23 +30,28 @@ const Register = () => {
     e.preventDefault();
 
     console.log(formData);
-
+    
     try {
-      const response = await fetch('http://localhost:3000/register',{
+      const response = await fetch('http://localhost:3000/api/register',{
         method : 'POST',
         headers : {
-          "Context-Type" : "application/json"
+          "Content-Type" : "application/json"
         },
         body : JSON.stringify(formData)
       });
 
-      const data = response.json();
+      const data = await response.json();
 
-      localStorage.setItem('token',data.token);
+      if(data.success === true){
+        navicate('/');
+      }else{
+        setMessage("*" +data.message);
+      }
 
-      
+      console.log(message);
+
     } catch (error) {
-      
+      console.log(error.message);
     }
   }
 
@@ -55,7 +60,9 @@ const Register = () => {
   return (
     <div className="min-h-screen flex justify-center items-center bg-gradient-to-r from-violet-300 to-blue-700">
       <div className="border space-y-4 w-[400px] rounded-2xl text-center p-8 bg-white/20 backdrop-blur-md border-white/30 shadow-2xl ">
-          <h2 className="text-3xl font-bold mb-9">REGISTER</h2>
+          <h2 className="text-3xl font-bold mb-5">REGISTER</h2>
+
+          <div className='text-red-500 text-[16px] '>{message}</div>
           
           <div className="">
             <input
@@ -70,6 +77,9 @@ const Register = () => {
           <div className="">
             <input
               type="text"
+              name="email"
+              value={formData.email}
+              onChange={handleChanges}
               className="border-1 border-blue-300/30 bg-white/80 p-2 w-full rounded outline"
               placeholder="Enter Your Email"
             />
@@ -77,6 +87,9 @@ const Register = () => {
           <div className="">
             <input
               type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChanges}
               className="border-1 border-blue-300/30 bg-white/80 p-2 w-full rounded outline"
               placeholder="Enter Your Password"
             />

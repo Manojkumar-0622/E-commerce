@@ -7,6 +7,7 @@ const Login = () => {
   {/*This is Login Page Components*/}
   const navicate = useNavigate();
 
+  const [message, setMessage] = useState();
   const [formData,setFromData] = useState({
     email : "",
     password : ""
@@ -31,14 +32,22 @@ const Login = () => {
     console.log(formData);
 
     try {
-      const response = await fetch('http://localhost:8080/login',{
+      const response = await fetch('http://localhost:3000/api/login',{
         method : 'POST',
         headers : {
-          "Context-Type" : "application/json"
+          "Content-Type" : "application/json"
         },
         body : JSON.stringify(formData)
       });
-      const data = response.json();
+      const data = await response.json();
+
+      if(data.success){
+          localStorage.setItem('token',token);
+      }else{
+        setMessage("* "+data.message);
+      }
+
+      console.log(data.token);
       
     } catch (error) {
       
@@ -50,11 +59,13 @@ const Login = () => {
   return (
     <div className="min-h-screen flex justify-center items-center bg-gradient-to-r from-violet-300 to-blue-700">
       <div className="border space-y-4 w-[400px] rounded-2xl text-center p-8 bg-white/20 backdrop-blur-md border-white/30 shadow-2xl ">
-          <h2 className="text-3xl font-bold mb-9">LOGIN</h2>
-          
+          <h2 className="text-3xl font-bold mb-5">LOGIN</h2>
+
+          <div className='text-red-500 text-[16px] '>{message}</div>
 
           <div className="mb-5">
             <input
+              name='email'
               type="email"
               value={formData.email}
               onChange={handleChanges}
@@ -64,6 +75,7 @@ const Login = () => {
           </div>
           <div className="">
             <input
+              name='password'
               type="password"
               value={formData.password}
               onChange={handleChanges}

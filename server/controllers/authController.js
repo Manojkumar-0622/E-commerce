@@ -4,6 +4,7 @@ import bcrypt from 'bcrypt';
 
 export const authRegister = async (req,res) =>{
     const {username, email, password} = req.body;
+    
     try {
         if(!username || !email ||  !password){
             return res.status(400).json({
@@ -22,13 +23,14 @@ export const authRegister = async (req,res) =>{
 
         const hashpassword = await bcrypt.hash(password,10);
         
-        const register = registerModel.create({
+        await registerModel.create({
             username,
             email,
             password : hashpassword
         });
+        
 
-        return res.status(500).json({
+        return res.status(200).json({
             success : true,
             message : 'register successfully added'
         })
@@ -77,10 +79,19 @@ export const authLogin = async (req, res) =>{
             { expiresIn : '1d'}
         );
 
+        console.log(token);
+
+        res.cookie('token',token,{
+            httpOnly : true,
+            secure : false,
+            sameSite : 'strict',
+            maxAge : 7 * 24  * 60 * 60 * 1000
+        });
+
         return res.status(200).json({
             success : true,
-            token
-        })
+            message : 'Login successfully'
+        });
 
     } catch (error) {
         console.log(error.message);

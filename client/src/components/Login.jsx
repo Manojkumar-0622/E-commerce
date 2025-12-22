@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {authImage, LoginIcon} from '../assets/assets.js'
 import { FaGoogle, FaFacebookF } from "react-icons/fa";
 import { useNavigate} from 'react-router-dom';
@@ -7,11 +7,17 @@ const Login = () => {
   {/*This is Login Page Components*/}
   const navicate = useNavigate();
 
+
+  const [animation,setAnimation] = useState(false);
   const [message, setMessage] = useState();
   const [formData,setFromData] = useState({
     email : "",
     password : ""
   })
+
+  useEffect(()=>{
+    setAnimation(true);
+  },[]);
 
   {/*Collecting the user data using useState*/}
   const handleChanges = (e) =>{
@@ -59,7 +65,9 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex justify-center items-center bg-gradient-to-r from-violet-300 to-blue-700">
-      <div className="border space-y-4 w-[400px] rounded-2xl text-center p-8 bg-white/20 backdrop-blur-md border-white/30 shadow-2xl ">
+      <div className={`border space-y-4 w-[400px] transition-all duration-700 ease-in-out
+                       rounded-2xl text-center p-8 bg-white/20 backdrop-blur-md border-white/30 shadow-2xl 
+                      ${animation ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
           <h2 className="text-3xl font-bold mb-5">LOGIN</h2>
 
           <div className='text-red-500 text-[16px] '>{message}</div>
@@ -70,7 +78,7 @@ const Login = () => {
               type="email"
               value={formData.email}
               onChange={handleChanges}
-              className="border-1 border-blue-300/30 bg-white/80 p-2 w-full rounded outline"
+              className="border-1 text-[16px] text-gray-700 border-blue-300/30 bg-white/80 p-2 w-full rounded outline"
               placeholder="Enter Your Email"
             />
           </div>

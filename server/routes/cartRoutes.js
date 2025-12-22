@@ -4,6 +4,6 @@ import { cartGet } from '../controllers/cartController.js';
 
 const route = express.Router();
 
-route.get('/test',requireAuth,cartGet)
+route.get('/test',requireAuth,cartGet);
 
 export default route;

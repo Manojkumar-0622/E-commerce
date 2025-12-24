@@ -61,7 +61,6 @@ const Register = () => {
   }
 
 
-
   return (
     <div className="min-h-screen flex justify-center items-center bg-gradient-to-r from-violet-300 to-blue-700">
       <div className={`border space-y-4 w-[400px] transition-all duration-700 ease-in-out rounded-2xl text-center p-8 bg-white/20 backdrop-blur-md border-white/30 shadow-2xl 

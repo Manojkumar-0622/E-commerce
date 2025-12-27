@@ -27,7 +27,7 @@ export const newArrival = [
             {normal_img  : Glorious_1 },
             {hover_img : Glorious_2}
           ],
-          start : 0
+          stock : 0
        },
        {
           name : "National Geographic Tee",
@@ -36,7 +36,7 @@ export const newArrival = [
             {normal_img  : National_1 },
             {hover_img : National_2}
           ],
-          start : 0
+          stock : 23
        },
        {
           name : "Quilted Crossbody Bag",
@@ -45,7 +45,9 @@ export const newArrival = [
             {normal_img  : Quilted_1 },
             {hover_img : Quilted_2}
           ],
-          start : 4
+          star : 4,
+          stock : 0
+          
        },
        {
           name : "Retro Liner Socks",
@@ -54,7 +56,8 @@ export const newArrival = [
             {normal_img  : Retro_1 },
             {hover_img : Retro_2}
           ],
-          start : 0
+          star : 5,
+          stock : 23
        },
 ]
 

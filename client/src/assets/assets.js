@@ -16,6 +16,51 @@ import Quilted_2 from '../assets/arrivals/Quilted Crossbody Bag_2.jpg';
 import Retro_1 from '../assets/arrivals/Retro Liner Socks_1.jpg';
 import Retro_2 from '../assets/arrivals/Retro Liner Socks_2.jpg';
 import homeBanner  from '../assets/homebanner.jpg';
+import Embroidered_1 from '../assets/FeaturedItems/Embroidered Haring Cap 1.jpg';
+import Embroidered_2 from '../assets/FeaturedItems/Embroidered Haring Cap 2.jpg';
+import Trainers_1 from '../assets/FeaturedItems/Trainers Multicolored Pieces 1.jpg';
+import Trainers_2 from '../assets/FeaturedItems/Trainers Multicolored Pieces 2.jpg';
+
+export const futueItem = [
+        {
+          name : "Embroidered Haring Cap",
+          price : [{price : 12.00}],
+          images : [
+            {normal_img  : Embroidered_1 },
+            {hover_img : Embroidered_2}
+          ],
+          stock : 2
+       },
+       {
+          name : "National Geographic Tee",
+          price : [{price : 24.00}],
+          images : [
+            {normal_img  : National_1 },
+            {hover_img : National_2}
+          ],
+          stock : 23
+       },
+        {
+          name : "Trainers Multicolored Pieces ",
+          price : [{price : 146.00}],
+          images : [
+            {normal_img  : Trainers_1 },
+            {hover_img : Trainers_2}
+          ],
+          stock : 0
+       },
+       {
+          name : "Quilted Crossbody Bag",
+          price : [{price : 21.00},{discount : 25.00}],
+          images : [
+            {normal_img  : Quilted_1 },
+            {hover_img : Quilted_2}
+          ],
+          star : 4,
+          stock : 0
+          
+       }      
+]
 
 
 

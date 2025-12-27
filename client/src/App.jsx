@@ -1,6 +1,5 @@
 import { Outlet, Route, Routes } from "react-router-dom"
 import Login from "./components/Login"
-import ProtectedRoute from "./components/ProtectedRoute"
 import Register from "./components/Register"
 import Layout from "./pages/Layout"
 import { HomePage } from "./pages/HomePage"

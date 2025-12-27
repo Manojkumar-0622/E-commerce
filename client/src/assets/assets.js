@@ -7,14 +7,15 @@ import section_1 from '../assets/section_1.jpg';
 import section_2 from '../assets/section_2.jpg';
 import section_3 from '../assets/section_3.jpg';
 import section_4 from '../assets/section_4.jpg';
-import Glorious_1 from '../assets/arrivals/Glorious Eyewear_1.jpg'
-import Glorious_2 from '../assets/arrivals/Glorious Eyewear_2.jpg'
-import National_1 from '../assets/arrivals/National Geographic Tee_1.jpg'
-import National_2 from '../assets/arrivals/National Geographic Tee_2.jpg'
-import Quilted_1 from '../assets/arrivals/Quilted Crossbody Bag_1.jpg'
-import Quilted_2 from '../assets/arrivals/Quilted Crossbody Bag_2.jpg'
-import Retro_1 from '../assets/arrivals/Retro Liner Socks_1.jpg'
-import Retro_2 from '../assets/arrivals/Retro Liner Socks_2.jpg'
+import Glorious_1 from '../assets/arrivals/Glorious Eyewear_1.jpg';
+import Glorious_2 from '../assets/arrivals/Glorious Eyewear_2.jpg';
+import National_1 from '../assets/arrivals/National Geographic Tee_1.jpg';
+import National_2 from '../assets/arrivals/National Geographic Tee_2.jpg';
+import Quilted_1 from '../assets/arrivals/Quilted Crossbody Bag_1.jpg';
+import Quilted_2 from '../assets/arrivals/Quilted Crossbody Bag_2.jpg';
+import Retro_1 from '../assets/arrivals/Retro Liner Socks_1.jpg';
+import Retro_2 from '../assets/arrivals/Retro Liner Socks_2.jpg';
+import homeBanner  from '../assets/homebanner.jpg';
 
 
 
@@ -76,6 +77,7 @@ export const mainImages = {
   section_1,
   section_2,
   section_3,
-  section_4
+  section_4,
+  homeBanner
 }
 

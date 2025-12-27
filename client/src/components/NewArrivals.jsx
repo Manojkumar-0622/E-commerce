@@ -24,7 +24,7 @@ const NewArrivals = ({dummayArrival,title}) => {
                                  className='absolute inset-0 w-full h-full object-cover
                                             opacity-100 group-hover:opacity-0 transition-opacity duration-300 ease-in-out
                                             ' />
-
+                                            
                             <img 
                                  src={items.images[1].hover_img}
                                  alt="" 

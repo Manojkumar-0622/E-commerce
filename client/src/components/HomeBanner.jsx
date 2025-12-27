@@ -11,7 +11,7 @@ const HomeBanner = () => {
             <div className="absolute inset-0 bg-white/10"></div>
             <div 
                 className='absolute top-1/2 right-[130px] -translate-y-1/2
-                           text-8xl font-bold text-white leading-[120px]'
+                           text-8xl font-bold text-white leading-30'
                 style={{fontFamily : 'cursive'}}>
                     
                 KEEP <br/>

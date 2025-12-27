@@ -4,6 +4,7 @@ import { newArrival,futueItem }  from '../assets/assets.js'
 import NewArrivals from '../components/NewArrivals.jsx'
 import ShopBySection from '../components/ShopBySection.jsx'
 import HomeBanner from '../components/HomeBanner.jsx'
+import CollectionBanner from '../components/CollectionBanner.jsx'
 
 export const HomePage = () => {
 
@@ -11,13 +12,14 @@ export const HomePage = () => {
     <>
         <MainScreen />
         <ShopBySection />
+        
         <NewArrivals dummayArrival={newArrival} 
                      title={'New Arrivals'}/>
         <HomeBanner />
         <NewArrivals dummayArrival={futueItem}
                      title={'Featured Items'}/>
 
-        
+        <CollectionBanner />
     </>
   )
 }

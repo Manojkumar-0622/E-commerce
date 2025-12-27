@@ -20,6 +20,9 @@ import Embroidered_1 from '../assets/FeaturedItems/Embroidered Haring Cap 1.jpg'
 import Embroidered_2 from '../assets/FeaturedItems/Embroidered Haring Cap 2.jpg';
 import Trainers_1 from '../assets/FeaturedItems/Trainers Multicolored Pieces 1.jpg';
 import Trainers_2 from '../assets/FeaturedItems/Trainers Multicolored Pieces 2.jpg';
+import collection_1 from '../assets/collection-1.jpg';
+import collection_2 from '../assets/collection-2.jpg';
+import collection_3 from '../assets/collection-3.jpg';
 
 export const futueItem = [
         {
@@ -123,6 +126,9 @@ export const mainImages = {
   section_2,
   section_3,
   section_4,
-  homeBanner
+  homeBanner,
+  collection_1,
+  collection_2,
+  collection_3
 }
 

@@ -12,6 +12,7 @@ import Glorious_2 from '../assets/arrivals/Glorious Eyewear_2.jpg';
 import National_1 from '../assets/arrivals/National Geographic Tee_1.jpg';
 import National_2 from '../assets/arrivals/National Geographic Tee_2.jpg';
 import Quilted_1 from '../assets/arrivals/Quilted Crossbody Bag_1.jpg';
+import Quilted_3 from '../assets/arrivals/Quilted Crossbody Bag_3.jpg';
 import Quilted_2 from '../assets/arrivals/Quilted Crossbody Bag_2.jpg';
 import Retro_1 from '../assets/arrivals/Retro Liner Socks_1.jpg';
 import Retro_2 from '../assets/arrivals/Retro Liner Socks_2.jpg';
@@ -26,6 +27,7 @@ import collection_3 from '../assets/collection-3.jpg';
 
 export const futueItem = [
         {
+          id : 1,
           name : "Embroidered Haring Cap",
           price : [{price : 12.00}],
           images : [
@@ -35,6 +37,7 @@ export const futueItem = [
           stock : 2
        },
        {
+          id : 2,
           name : "National Geographic Tee",
           price : [{price : 24.00}],
           images : [
@@ -44,6 +47,7 @@ export const futueItem = [
           stock : 23
        },
         {
+          id : 3,
           name : "Trainers Multicolored Pieces ",
           price : [{price : 146.00}],
           images : [
@@ -53,16 +57,22 @@ export const futueItem = [
           stock : 0
        },
        {
+          id : 4,
           name : "Quilted Crossbody Bag",
           price : [{price : 21.00},{discount : 25.00}],
           images : [
             {normal_img  : Quilted_1 },
-            {hover_img : Quilted_2}
+            {hover_img : Quilted_2},
+            {full_img : Quilted_3}
           ],
+          simple_des : "Qui, explicabo eius nisi fugit repudiandae, quos voluptates, beatae ullam consectetur ducimus itaque! Tempore provident eligendi sed ipsum ea. Reiciendis nulla neque sapiente, totam veritatis non? Odio, quaerat.",
+          colors : ["red","blue"],
+          Categories : ["Bags","Sales","Sportswear","Women"],
+          Tags : ["fashion","summer"],
+          review : 1,
           star : 4,
           stock : 0
-          
-       }      
+       } 
 ]
 
 
@@ -70,6 +80,7 @@ export const futueItem = [
 
 export const newArrival = [
        {
+          id : 5,
           name : "Glorious Eyewear",
           price : [{price : 37.00}],
           images : [
@@ -79,6 +90,7 @@ export const newArrival = [
           stock : 0
        },
        {
+          id : 6,
           name : "National Geographic Tee",
           price : [{price : 24.00}],
           images : [
@@ -88,6 +100,7 @@ export const newArrival = [
           stock : 23
        },
        {
+          id : 7,
           name : "Quilted Crossbody Bag",
           price : [{price : 21.00},{discount : 25.00}],
           images : [
@@ -99,6 +112,7 @@ export const newArrival = [
           
        },
        {
+          id : 8,
           name : "Retro Liner Socks",
           price : [{price : 70.00}],
           images : [

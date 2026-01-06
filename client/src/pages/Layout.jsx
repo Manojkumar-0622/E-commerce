@@ -13,7 +13,7 @@ const Layout = () => {
     <>
       <Navbar SetSearch={SetSearch}
               search={search}/>
-      <Outlet context={{ search }}/>
+        <Outlet context={{ search }}/>
       <Footer />
     </>
   )

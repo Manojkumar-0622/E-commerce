@@ -45,6 +45,8 @@ const Footer = () => {
                     <li><a href="#">F.A.Qs</a></li>
                 </ul>
             </div>
+
+            
             <div className='flex-1'>
                 <div 
                     className='text-2xl'>Newsletter</div>

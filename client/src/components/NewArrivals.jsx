@@ -2,11 +2,13 @@ import React from 'react'
 import { FaRegHeart } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
 import { IoCartOutline } from "react-icons/io5";
+import { useNavigate } from 'react-router-dom';
 
 
 const NewArrivals = ({dummayArrival,title}) => {
 
     console.log(dummayArrival);
+    const navigater = useNavigate();
 
 
     return (
@@ -17,7 +19,7 @@ const NewArrivals = ({dummayArrival,title}) => {
                  className='flex gap-3 mt-20 justify-around mx-6 '>
                 {dummayArrival.map(items =>(
                     <div key={items.name}>
-                        <div className='w-[250px] group cursor-pointer relative h-[250px]'>
+                        <div onClick={()=>navigater(`/products/${items.id}`)} className='w-[250px] group cursor-pointer relative h-[250px]'>
                             <img 
                                  src={items.images[0].normal_img}
                                  alt=""

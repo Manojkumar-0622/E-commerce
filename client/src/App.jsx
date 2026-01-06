@@ -4,18 +4,26 @@ import Register from "./components/Register"
 import Layout from "./pages/Layout"
 import { HomePage } from "./pages/HomePage"
 import AllProducts from "./pages/AllProducts"
+import ProductDetailsPage from "./pages/ProductDetailsPage"
 
 const App = () => {
+
+
   return (
     <>
     <Routes>
       <Route path="/login" element={<Login />}/>
       <Route path="/register" element={<Register />}/>
 
-
       <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />}/>
-          <Route path="/products" element={<AllProducts />}/>
+          <Route index 
+                 element={<HomePage />}/>
+
+          <Route path="/products" 
+                 element = {<AllProducts />}/>
+
+          <Route path="/products/:id" 
+                 element = {<ProductDetailsPage />}/>
       </Route>
       
     </Routes>

@@ -23,22 +23,31 @@ const Navbar = ({SetSearch , search}) => {
 
 
     return (
-        <div className='w-full h-23 flex   justify-between items-center '>
-            <div className='pl-12 text-3xl opacity-70 flex-1'>
-                <div className='cursor-pointer inline-block'>Blow</div>
+        <div 
+            className='w-full h-23 flex   justify-between items-center '>
+            <div 
+                className='pl-12 text-3xl opacity-70 flex-1'>
+                <div 
+                    className='cursor-pointer inline-block'>Blow</div>
             </div>
-            <div className='flex flex-1'>
-                <ul className='flex gap-10'>
+            <div 
+                className='flex flex-1'>
+                <ul 
+                    className='flex gap-10'>
                     {navicateLinks.map(links =>(
-                        <li key={links.name} className='relative group py-5 px-1 text-[17px]'>
+                        <li key={links.name} 
+                            className='relative group py-5 px-1 text-[17px]'>
                             <NavLink to={links.path} className={ ({isActive})=> isActive ? 'text-orange-600' : 'text-black hover:text-orange-600' }>
                                 {links.name}
                             </NavLink>
                             {links.child && (
-                                <ul className='min-w-[140px] z-20 bg-white opacity-0 translate-y-6 transition-all duration-300 ease-in-out  absolute rounded right-[-55px] top-[57px] group-hover:opacity-100 group-hover:translate-y-0'>
+                                <ul 
+                                    className='min-w-[140px] z-20 bg-white opacity-0 translate-y-6 transition-all duration-300 ease-in-out  absolute rounded right-[-55px] top-[57px] group-hover:opacity-100 group-hover:translate-y-0'>
                                     {links.child.map(ChildLink =>(
-                                        <li key={ChildLink.name} className='p-1 block whitespace-nowrap'>
-                                            <NavLink to={ChildLink.path} className={`block ${(isActive) => isActive ? 'text-orange-600  bg-orange-600/30' 
+                                        <li key={ChildLink.name} 
+                                            className='p-1 block whitespace-nowrap'>
+                                            <NavLink to={ChildLink.path} 
+                                                className={`block ${(isActive) => isActive ? 'text-orange-600  bg-orange-600/30' 
                                                 : 'text-black'} hover:text-orange-600  hover:bg-orange-600/30 transition duration-300 text-center text-[15px] text-gray-700 rounded py-2`}>
                                                 {ChildLink.name}
                                             </NavLink>
@@ -50,13 +59,18 @@ const Navbar = ({SetSearch , search}) => {
 
                     ))}
                 </ul>
-                <div className='flex-1 flex justify-around items-center ml-10 mr-3'>
-                    <FaSearch className='size-6 cursor-pointer'
-                              onClick={()=> SetSearch(true)}
+                <div 
+                    className='flex-1 flex justify-around items-center ml-10 mr-3'>
+                    <FaSearch 
+                        className='size-6 cursor-pointer'
+                        onClick={()=> SetSearch(true)}
                     />
-                        <div className={`${search ? 'opacity-100 top-1/2' : 'opacity-0 top-0'} transition-all duration-300 ease-in-out absolute rounded -translate-y-1/2 left-1/2 -translate-x-1/2 min-w-[550px] z-40 bg-white`}>
-                            <div className='flex justify-between items-center  px-4 py-4'>
-                                <div className='text-[17px] font-semibold'>
+                        <div 
+                            className={`${search ? 'opacity-100 top-1/2' : 'opacity-0 top-0'} transition-all duration-300 ease-in-out absolute rounded -translate-y-1/2 left-1/2 -translate-x-1/2 min-w-[550px] z-40 bg-white`}>
+                            <div 
+                                className='flex justify-between items-center  px-4 py-4'>
+                                <div 
+                                    className='text-[17px] font-semibold'>
                                     TYPE TO SEARCH
                                 </div>
                                 <div>

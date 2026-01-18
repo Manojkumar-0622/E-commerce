@@ -37,16 +37,6 @@ export const futueItem = [
           stock : 2
        },
        {
-          id : 2,
-          name : "National Geographic Tee",
-          price : [{price : 24.00}],
-          images : [
-            {normal_img  : National_1 },
-            {hover_img : National_2}
-          ],
-          stock : 23
-       },
-        {
           id : 3,
           name : "Trainers Multicolored Pieces ",
           price : [{price : 146.00}],
@@ -72,7 +62,17 @@ export const futueItem = [
           review : 1,
           star : 4,
           stock : 0
-       } 
+       },
+       {
+          id : 5,
+          name : "Glorious Eyewear",
+          price : [{price : 37.00}],
+          images : [
+            {normal_img  : Glorious_1 },
+            {hover_img : Glorious_2}
+          ],
+          stock : 0
+       },
 ]
 
 

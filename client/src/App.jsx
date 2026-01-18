@@ -19,11 +19,24 @@ const App = () => {
           <Route index 
                  element={<HomePage />}/>
 
+          <Route path="/shop" 
+                 element={<div>Shop Page</div>}/>
+
           <Route path="/products" 
                  element = {<AllProducts />}/>
 
           <Route path="/products/:id" 
                  element = {<ProductDetailsPage />}/>
+                 
+          <Route path="/blog/blogpage" 
+                 element={<div>Blog Page</div>}/>
+
+          <Route path="/blog/singleblog" 
+                 element={<div>Single Blog</div>}/>
+
+          <Route path="/contact" 
+                 element={<div>Contact Page</div>}/>
+
       </Route>
       
     </Routes>

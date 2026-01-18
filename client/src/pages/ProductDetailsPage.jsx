@@ -23,19 +23,23 @@ const ProductDetailsPage = () => {
         SetPreviousItem(PreItem);
         SetNextItem(NexItem);
         
-    },[]);
+    },[id]);
+
+    console.log(previousItem);
+    console.log(nextItem);
 
 
     return (
         <>
-            <div className=' mx-10 bg-gray-100 mt-5'>
+            <div className='p-10 bg-gray-100 mt-5'>
                 <DetailPageNav PreviousItem={previousItem}
+                               SetProdcuts={SetProdcuts}
+                               SetPreviousItem={SetPreviousItem}
+                               SetNextItem={SetNextItem}
                                NextItem={nextItem}
                                Products={products}
                 />
             </div>
-
-            
         </>
     )
 }

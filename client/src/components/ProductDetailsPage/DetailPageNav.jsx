@@ -50,7 +50,7 @@ const DetailPageNav = ({
                                 opacity-0 translate-y-6 pointer-events-none
                                 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto
                                 transition-all duration-200 ease-out
-                                w-[200px]
+                                w-50
                             ">
                                 <img
                                     src={PreviousItem.images?.[0]?.normal_img}
@@ -83,7 +83,7 @@ const DetailPageNav = ({
                                 opacity-0 translate-y-6 pointer-events-none
                                 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto
                                 transition-all duration-200 ease-out
-                                w-[200px]
+                                w-50
                             ">
                                 <img
                                     src={NextItem.images?.[0]?.normal_img}

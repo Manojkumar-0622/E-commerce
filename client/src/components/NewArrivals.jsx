@@ -52,11 +52,11 @@ const NewArrivals = ({dummayArrival,title}) => {
 
                         <div 
                             className='text-center my-4 text-gray-700'>{items.name}</div>
-                        {items.star && <div 
-                                            className='text-centern flex items-center justify-center mb-4'>{Array.from({ length: items.star }).map((_, index) => (
-                            <span key={index}
-                                  className=''><FaStar 
-                                                        className='fill-amber-300'/></span>
+                        {items.star && <div className='text-centern flex items-center justify-center mb-4'>
+                        {Array.from({ length: items.star }).map((_, index) => (
+                            <span key={index} className=''>
+                                <FaStar className='fill-amber-300'/>
+                            </span>
                         ))}</div>}
                         <div 
                             className='flex items-center gap-2 justify-center'>

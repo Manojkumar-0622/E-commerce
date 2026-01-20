@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { futueItem } from '../assets/assets'
 import DetailPageNav from '../components/ProductDetailsPage/DetailPageNav';
+import ProductDetail from '../components/ProductDetailsPage/ProductDetail';
 
 const ProductDetailsPage = () => {
     //geting id from NewArrivals to fetch only that produte datas
@@ -25,20 +26,18 @@ const ProductDetailsPage = () => {
         
     },[id]);
 
-    console.log(previousItem);
-    console.log(nextItem);
-
 
     return (
         <>
             <div className='p-10 bg-gray-100 mt-5'>
+
                 <DetailPageNav PreviousItem={previousItem}
-                               SetProdcuts={SetProdcuts}
-                               SetPreviousItem={SetPreviousItem}
-                               SetNextItem={SetNextItem}
                                NextItem={nextItem}
                                Products={products}
                 />
+
+                <ProductDetail products={products}/>
+
             </div>
         </>
     )

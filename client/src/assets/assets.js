@@ -24,6 +24,7 @@ import Trainers_2 from '../assets/FeaturedItems/Trainers Multicolored Pieces 2.j
 import collection_1 from '../assets/collection-1.jpg';
 import collection_2 from '../assets/collection-2.jpg';
 import collection_3 from '../assets/collection-3.jpg';
+// import Safecheckout from '../assets/Safecheckout.png';
 
 export const futueItem = [
         {
@@ -58,7 +59,7 @@ export const futueItem = [
           simple_des : "Qui, explicabo eius nisi fugit repudiandae, quos voluptates, beatae ullam consectetur ducimus itaque! Tempore provident eligendi sed ipsum ea. Reiciendis nulla neque sapiente, totam veritatis non? Odio, quaerat.",
           colors : ["red","blue"],
           Categories : ["Bags","Sales","Sportswear","Women"],
-          Tags : ["fashion","summer"],
+          Tags : ["Fashion","Summer"],
           review : 1,
           star : 4,
           stock : 0
@@ -145,4 +146,8 @@ export const mainImages = {
   collection_2,
   collection_3
 }
+
+// export const detailImage = {
+//   Safecheckout
+// }
 

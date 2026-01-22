@@ -1,16 +1,22 @@
 import React, { useState, useEffect } from 'react'
 import { FaStar } from "react-icons/fa";
 import { SlRefresh } from "react-icons/sl";
+import { FaAngleLeft } from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
+import { FaAngleRight } from "react-icons/fa6";
+
+// import { detailImage } from '../../assets/assets.js';
+import detailsImage from '../ProductDetailsPage/Safecheckout.png'
 
 
 const ProductDetail = ({ products }) => {
 
-    // ✅ Hooks MUST be at top
+    // Hooks MUST be at top
     const [count, setCount] = useState(1);
     const [currentImage, setCurrentImage] = useState(null);
+    let [imageIndex, setImageIndex] = useState(0);
 
-    // ✅ Set image AFTER products load
+    // Set image AFTER products load
     useEffect(() => {
         if (products?.images?.length > 0) {
             setCurrentImage(Object.values(products.images[0])[0]);
@@ -25,7 +31,7 @@ const ProductDetail = ({ products }) => {
         setCount(count + 1);
     };
 
-    // ✅ Safe early return AFTER hooks
+    // Safe early return AFTER hooks
     if (!products) {
         return null;
     }
@@ -34,11 +40,30 @@ const ProductDetail = ({ products }) => {
         Object.values(item)
     );
 
+    console.log(imageValues.indexOf(currentImage));
+    
+    const nextValue = ()=>{
+        let index = imageValues.indexOf(currentImage);
+        if(index == imageValues.length){
+            setImageIndex(0)
+        }else{
+            setImageIndex(imageIndex++);
+        }
+        setCurrentImage(imageValues[imageIndex]);
+        console.log(imageIndex);
+    }
+    console.log(currentImage);
+
+
+    
+
+
+
     return (
         <div className='flex mt-10 gap-2'>
 
             {/* Right side - Images */}
-            <div className='flex p-2 w-350'>
+            <div className='flex p-2 relative w-350'>
                 <div className='w-15'>
                     {imageValues.map((imageUrl, index) => (
                         <img
@@ -51,7 +76,7 @@ const ProductDetail = ({ products }) => {
                     ))}
                 </div>
 
-                <div className='mt-4 ml-20 w-100 flex items-center justify-center'>
+                <div className='mt-4 relative ml-15 w-130 flex items-center justify-center'>
                     {currentImage && (
                         <img
                             src={currentImage}
@@ -60,7 +85,15 @@ const ProductDetail = ({ products }) => {
                         />
                     )}
                 </div>
+                
+                <div className=' flex top-90 left-47 justify-between items-center absolute h-12 w-100' >
+                    <FaAngleLeft className='size-11 p-2 rounded-full cursor-pointer bg-white'
+                            />
+                    <FaAngleRight className='size-11 p-2 rounded-full cursor-pointer bg-white'
+                                  onClick={()=> nextValue()}/>
+                </div>
             </div>
+
 
             {/* Left side - Product Details */}
             <div className='w-full'>
@@ -159,14 +192,33 @@ const ProductDetail = ({ products }) => {
                     <div className='text-[15px]'>Add to wishlist</div>
                 </div>
 
-                <div className='flex mt-4 font-light'>
-                    <div>Categories:</div>
-                    <div className='flex ml-2 '>{products.Categories.map(item =>(
+                
+                <div className='text-[15px] text-gray-600 mt-8'>SKU: RED-02</div>
+
+                {/*Categories tags*/}
+                <div className='flex mt-2 font-light'>
+                    <div className='text-gray-600'>Categories:</div>
+                    <div className='flex ml-2 '>{products.Categories.map((item,index) =>(
                         <div className='hover:text-blue-500 cursor-pointer'
-                             onClick={()=>console.log(item)}>{item},</div>
-                        
+                             onClick={()=>console.log(item)}>{item}  
+                             {products.Categories.length-1 > index && <span> ,</span>} </div>
                     ))}</div>
                 </div>
+
+                {/*Categories tags*/}
+                <div className='flex mt-2 font-light'>
+                    <div className='text-gray-600'>Tags:</div>
+                    <div className='flex ml-2 '>{products.Tags.map((item,index) =>(
+                        <div className='hover:text-blue-500 cursor-pointer'
+                             onClick={()=>console.log(item)}>{item}  
+                             {products.Tags.length-1 > index && <span> ,</span>} </div>
+                    ))}</div>
+                </div>
+
+                <div className='mt-10'>
+                    <img src={detailsImage} alt="" className='w-fit' />
+                </div>
+
 
             </div>
         </div>

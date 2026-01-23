@@ -1,68 +1,88 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useRef } from 'react';
 import { FaStar } from "react-icons/fa";
 import { SlRefresh } from "react-icons/sl";
-import { FaAngleLeft } from "react-icons/fa";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import { CiHeart } from "react-icons/ci";
-import { FaAngleRight } from "react-icons/fa6";
 
-// import { detailImage } from '../../assets/assets.js';
-import detailsImage from '../ProductDetailsPage/Safecheckout.png'
-
+import detailsImage from '../ProductDetailsPage/Safecheckout.png';
 
 const ProductDetail = ({ products }) => {
 
-    // Hooks MUST be at top
+    /* =======================
+       HOOKS (TOP ONLY)
+    ======================== */
     const [count, setCount] = useState(1);
-    const [currentImage, setCurrentImage] = useState(null);
-    let [imageIndex, setImageIndex] = useState(0);
+    const [imageIndex, setImageIndex] = useState(0);
+    const imgRef = useRef(null);
+    const [transform, setTransform] = useState("scale(1)");
 
-    // Set image AFTER products load
-    useEffect(() => {
-        if (products?.images?.length > 0) {
-            setCurrentImage(Object.values(products.images[0])[0]);
-        }
-    }, [products]);
+    /* =======================
+       SAFE RETURN
+    ======================== */
+    if (!products) return null;
 
-    const decrease = () => {
-        if (count > 1) setCount(count - 1);
-    };
-
-    const increase = () => {
-        setCount(count + 1);
-    };
-
-    // Safe early return AFTER hooks
-    if (!products) {
-        return null;
-    }
-
+    /* =======================
+       DERIVED DATA
+    ======================== */
     const imageValues = products.images.flatMap(item =>
         Object.values(item)
     );
 
-    console.log(imageValues.indexOf(currentImage));
-    
-    const nextValue = ()=>{
-        let index = imageValues.indexOf(currentImage);
-        if(index == imageValues.length){
-            setImageIndex(0)
-        }else{
-            setImageIndex(imageIndex++);
-        }
-        setCurrentImage(imageValues[imageIndex]);
-        console.log(imageIndex);
-    }
-    console.log(currentImage);
+    const currentImage = imageValues[imageIndex];
 
+    /* =======================
+       QUANTITY
+    ======================== */
+    const decrease = () => {
+        setCount(prev => (prev > 1 ? prev - 1 : 1));
+    };
 
-    
+    const increase = () => {
+        setCount(prev => prev + 1);
+    };
 
+    /* =======================
+       IMAGE NAVIGATION
+    ======================== */
+    const nextValue = () => {
+        setImageIndex(prev =>
+            prev === imageValues.length - 1 ? 0 : prev + 1
+        );
+    };
 
+    const prevValue = () => {
+        setImageIndex(prev =>
+            prev === 0 ? imageValues.length - 1 : prev - 1
+        );
+    };
 
+    /* =======================
+       IMAGE ZOOM LOGIC
+    ======================== */
+    const handleMouseMove = (e) => {
+        if (!imgRef.current) return;
+
+        const rect = imgRef.current.getBoundingClientRect();
+
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+        setTransform(
+            `scale(2) translate(${-(x - 50) / 2}%, ${-(y - 50) / 2}%)`
+        );
+    };
+
+    const handleMouseLeave = () => {
+        setTransform("scale(1)");
+    };
+
+    /* =======================
+       JSX
+    ======================== */
     return (
         <div className='flex mt-10 gap-2'>
 
-            {/* Right side - Images */}
+            {/* IMAGE SECTION */}
             <div className='flex p-2 relative w-350'>
                 <div className='w-15'>
                     {imageValues.map((imageUrl, index) => (
@@ -70,40 +90,44 @@ const ProductDetail = ({ products }) => {
                             key={index}
                             src={imageUrl}
                             alt=""
-                            className='border mt-2 p-1 cursor-pointer'
-                            onClick={() => setCurrentImage(imageUrl)}
+                            className={`${imageIndex === index ? 'border' : ''} mt-2 p-1 cursor-pointer`}
+                            onClick={() => setImageIndex(index)}
                         />
                     ))}
                 </div>
 
-                <div className='mt-4 relative ml-15 w-130 flex items-center justify-center'>
-                    {currentImage && (
-                        <img
-                            src={currentImage}
-                            alt=""
-                            className='w-250 h-150 p-4 mt-15'
-                        />
-                    )}
+                <div
+                    className="relative w-80 h-80 overflow-hidden border ml-15"
+                    onMouseMove={handleMouseMove}
+                    onMouseLeave={handleMouseLeave}
+                >
+                    <img
+                        src={currentImage}
+                        alt=""
+                        ref={imgRef}
+                        className="w-full h-full object-cover transition-transform duration-75"
+                        style={{ transform }}
+                    />
                 </div>
-                
-                <div className=' flex top-90 left-47 justify-between items-center absolute h-12 w-100' >
-                    <FaAngleLeft className='size-11 p-2 rounded-full cursor-pointer bg-white'
-                            />
-                    <FaAngleRight className='size-11 p-2 rounded-full cursor-pointer bg-white'
-                                  onClick={()=> nextValue()}/>
+
+                <div className='flex top-90 left-47 justify-between items-center absolute h-12 w-100'>
+                    <FaAngleLeft
+                        className='size-11 p-2 rounded-full cursor-pointer bg-white'
+                        onClick={prevValue}
+                    />
+                    <FaAngleRight
+                        className='size-11 p-2 rounded-full cursor-pointer bg-white'
+                        onClick={nextValue}
+                    />
                 </div>
             </div>
 
-
-            {/* Left side - Product Details */}
+            {/* PRODUCT DETAILS */}
             <div className='w-full'>
-
-                {/* Product Name */}
                 <div className='text-3xl text-gray-700 mt-6 font-semibold'>
                     {products.name}
                 </div>
 
-                {/* Product Price */}
                 <div className='mt-5'>
                     {products.price.length === 2 ? (
                         <div className='flex gap-2 text-[23px] mt-4'>
@@ -117,7 +141,6 @@ const ProductDetail = ({ products }) => {
                     )}
                 </div>
 
-                {/* Reviews */}
                 {products.star > 0 && (
                     <div className='flex items-center mt-5 gap-2'>
                         <div className='flex gap-1.5 text-[20px]'>
@@ -131,95 +154,36 @@ const ProductDetail = ({ products }) => {
                     </div>
                 )}
 
-                {/* Description */}
                 <div className='mt-10 text-gray-700 leading-7'>
                     {products.simple_des}
                 </div>
 
-                {/* Color Selector */}
-                <div className='mt-8'>
-                    <div className='text-[20px] font-semibold'>COLOR</div>
-                    <div className='flex items-center'>
-                        <select className='border-2 p-2 mt-3 bg-white'>
-                            <option>choose option</option>
-                            {products.colors.map((item, index) => (
-                                <option key={index}>{item}</option>
-                            ))}
-                        </select>
-                        <div className='flex items-center px-3 mt-3 ml-3 bg-white cursor-pointer'>
-                            <SlRefresh />
-                            <span className='ml-2'>clear</span>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Quantity */}
+                {/* QUANTITY */}
                 <div className='flex items-center mt-5'>
-                    {/*Quantity controller button*/}
                     <div className="flex items-center border p-1 bg-white w-fit mt-6">
-                    <button
-                        onClick={decrease}
-                        className="px-3 py-1 font-bold border-r hover:bg-gray-100"
-                    >
-                        -
-                    </button>
-
-                       <input
+                        <button onClick={decrease} className="px-3 py-1 font-bold border-r">-</button>
+                        <input
                             type="number"
                             value={count}
                             onChange={(e) => setCount(Number(e.target.value))}
                             className="w-14 text-center outline-none"
                         />
-
-                        <button
-                            onClick={increase}
-                            className="px-3 py-1 font-bold border-l hover:bg-gray-100"
-                        >
-                            +
-                        </button>
+                        <button onClick={increase} className="px-3 py-1 font-bold border-l">+</button>
                     </div>
-
-                    {/*Add to cart*/}
 
                     <div className='border p-2.5 px-4 mt-6 ml-4 bg-orange-600 text-white font-bold cursor-pointer'>
-                        <div className='text-[15px]'>ADD TO CARD</div>
+                        ADD TO CART
                     </div>
                 </div>
 
-                {/*Add to your wishlist*/}
                 <div className='flex items-center mt-3 text-gray-500 hover:text-gray-700 cursor-pointer'>
-                    <CiHeart className='mr-1'/>
-                    <div className='text-[15px]'>Add to wishlist</div>
-                </div>
-
-                
-                <div className='text-[15px] text-gray-600 mt-8'>SKU: RED-02</div>
-
-                {/*Categories tags*/}
-                <div className='flex mt-2 font-light'>
-                    <div className='text-gray-600'>Categories:</div>
-                    <div className='flex ml-2 '>{products.Categories.map((item,index) =>(
-                        <div className='hover:text-blue-500 cursor-pointer'
-                             onClick={()=>console.log(item)}>{item}  
-                             {products.Categories.length-1 > index && <span> ,</span>} </div>
-                    ))}</div>
-                </div>
-
-                {/*Categories tags*/}
-                <div className='flex mt-2 font-light'>
-                    <div className='text-gray-600'>Tags:</div>
-                    <div className='flex ml-2 '>{products.Tags.map((item,index) =>(
-                        <div className='hover:text-blue-500 cursor-pointer'
-                             onClick={()=>console.log(item)}>{item}  
-                             {products.Tags.length-1 > index && <span> ,</span>} </div>
-                    ))}</div>
+                    <CiHeart className='mr-1' />
+                    Add to wishlist
                 </div>
 
                 <div className='mt-10'>
-                    <img src={detailsImage} alt="" className='w-fit' />
+                    <img src={detailsImage} alt="" />
                 </div>
-
-
             </div>
         </div>
     );

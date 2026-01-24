@@ -97,7 +97,7 @@ const ProductDetail = ({ products }) => {
                 </div>
 
                 <div
-                    className="relative w-80 h-80 overflow-hidden border ml-15"
+                    className="relative w-120 h-120 top-15 overflow-hidden ml-15"
                     onMouseMove={handleMouseMove}
                     onMouseLeave={handleMouseLeave}
                 >
@@ -105,12 +105,12 @@ const ProductDetail = ({ products }) => {
                         src={currentImage}
                         alt=""
                         ref={imgRef}
-                        className="w-full h-full object-cover transition-transform duration-75"
+                        className="w-full h-full absolute  object-cover transition-transform duration-75"
                         style={{ transform }}
                     />
                 </div>
 
-                <div className='flex top-90 left-47 justify-between items-center absolute h-12 w-100'>
+                <div className='flex top-90 left-32 justify-between items-center absolute h-12 w-120'>
                     <FaAngleLeft
                         className='size-11 p-2 rounded-full cursor-pointer bg-white'
                         onClick={prevValue}

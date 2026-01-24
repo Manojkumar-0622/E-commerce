@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom'
 import { futueItem } from '../assets/assets'
 import DetailPageNav from '../components/ProductDetailsPage/DetailPageNav';
 import ProductDetail from '../components/ProductDetailsPage/ProductDetail';
+import AboutProducts from '../components/ProductDetailsPage/AboutProducts';
+import ProductColor from '../components/ProductDetailsPage/productColor';
 
 const ProductDetailsPage = () => {
     //geting id from NewArrivals to fetch only that produte datas
@@ -14,6 +16,7 @@ const ProductDetailsPage = () => {
     const [nextItem,SetNextItem] = useState();
 
     useEffect(()=>{
+
         const productId = Number(id);
 
         const Pro = futueItem.find(item => item.id == productId);
@@ -37,8 +40,10 @@ const ProductDetailsPage = () => {
                 />
 
                 <ProductDetail products={products}/>
-
             </div>
+
+        
+            <AboutProducts products={products}/>
         </>
     )
 }

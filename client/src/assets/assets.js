@@ -25,6 +25,7 @@ import collection_1 from '../assets/collection-1.jpg';
 import collection_2 from '../assets/collection-2.jpg';
 import collection_3 from '../assets/collection-3.jpg';
 // import Safecheckout from '../assets/Safecheckout.png';
+import iconImage from '../assets/Mikasa_Ackerman.jpg';
 
 export const futueItem = [
         {
@@ -57,6 +58,16 @@ export const futueItem = [
             {full_img : Quilted_3}
           ],
           simple_des : "Qui, explicabo eius nisi fugit repudiandae, quos voluptates, beatae ullam consectetur ducimus itaque! Tempore provident eligendi sed ipsum ea. Reiciendis nulla neque sapiente, totam veritatis non? Odio, quaerat.",
+          review : [
+            {
+              image : iconImage,
+              starts : 4,
+              name : 'woostify',
+              date : 'Januart 6, 2020',
+              message : 'Awesome!'
+            }
+          ],
+          full_des : "Eum culpa assumenda eligendi fugit laborum vitae odit deleniti illo quasi voluptates, ipsa, placeat, quaerat, omnis nisi. Repellendus reprehenderit temporibus optio, unde enim vel dignissimos! Deleniti sed perferendis quod ratione incidunt, quam illo et, nulla delectus. Qui, explicabo eius nisi fugit repudiandae, quos voluptates, beatae ullam consectetur ducimus itaque! Tempore provident eligendi sed ipsum ea. Reiciendis nulla neque sapiente, totam veritatis non? Odio, quaerat.",
           colors : ["red","blue"],
           Categories : ["Bags","Sales","Sportswear","Women"],
           Tags : ["Fashion","Summer"],

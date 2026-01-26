@@ -5,6 +5,8 @@ import DetailPageNav from '../components/ProductDetailsPage/DetailPageNav';
 import ProductDetail from '../components/ProductDetailsPage/ProductDetail';
 import AboutProducts from '../components/ProductDetailsPage/AboutProducts';
 import ProductColor from '../components/ProductDetailsPage/productColor';
+import { newArrival } from '../assets/assets.js'
+import NewArrivals from '../components/NewArrivals.jsx';
 
 const ProductDetailsPage = () => {
     //geting id from NewArrivals to fetch only that produte datas
@@ -44,6 +46,13 @@ const ProductDetailsPage = () => {
 
         
             <AboutProducts products={products}/>
+
+            <hr  className='mt-14 border-gray-200'/>
+
+            {/*dummy for data used for test so in backend sent currect Related products*/}
+            <NewArrivals dummayArrival={newArrival}
+                         title={'Related products'}/>
+
         </>
     )
 }

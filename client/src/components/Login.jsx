@@ -54,8 +54,7 @@ const Login = () => {
         setMessage("* "+data.message);
       }
 
-      console.log(data.token);
-      
+      console.log(data.token); 
     } catch (error) {
       
     }

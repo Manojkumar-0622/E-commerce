@@ -1,14 +1,47 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FaRegHeart } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
 import { IoCartOutline } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
-
+import { CartContext } from '../context/CartContext.jsx';
+import { useContext } from 'react';
 
 const NewArrivals = ({dummayArrival,title}) => {
 
-    console.log(dummayArrival);
     const navigater = useNavigate();
+    const { cart, SetCart} = useContext(CartContext);
+
+    const handleCartProducts = (products) =>{
+        SetCart(PrevItem => {
+            const excisting = PrevItem.find(item => item.id === products.id);
+
+            if(excisting){
+                return PrevItem.map(item =>(
+                    item.id === products.id ?
+                    {...item, quantity : item.quantity + 1}  :
+                    item
+                ));
+            }
+
+            else{
+                return [
+                    ...PrevItem,
+                    {
+                        id: products.id,
+                        name: products.name,
+                        image: products.images[0].normal_img,
+                        price: products.price[0].price,
+                        stock: products.stock,
+                        quantity: 1
+                    }
+                ]
+            }
+        })
+    };
+
+    useEffect(()=>{
+        console.log(cart);
+    },[cart]);
 
 
     return (
@@ -43,10 +76,11 @@ const NewArrivals = ({dummayArrival,title}) => {
                             <div 
                                 className='flex absolute z-30 opacity-0 group-hover:opacity-100 top-1/2 left-1/2 items-center 
                                             gap-1.5 text-[14px] py-1.5 px-2.5 transition-opacity duration-300 ease-in-out hover:bg-gray-800
-                                            -translate-y-1/2 -translate-x-1/2 bg-orange-800 [word-spacing:3px] text-white'>
-                                <IoCartOutline 
-                                              className='size-5.5'/>
+                                            -translate-y-1/2 -translate-x-1/2 bg-orange-800 [word-spacing:3px] text-white'
+                                onClick={()=>handleCartProducts(items)}>
+                                <IoCartOutline className='size-5.5'/>
                                 Add to cart
+
                             </div>
                         </div>
 
@@ -58,7 +92,7 @@ const NewArrivals = ({dummayArrival,title}) => {
                                 <FaStar className='fill-amber-300'/>
                             </span>
                         ))}</div>}
-                        <div 
+                        <div
                             className='flex items-center gap-2 justify-center'>
                             {items.price[1] && <div 
                                                     className='line-through text-gray-400'>${items.price[1].discount}.00</div>}

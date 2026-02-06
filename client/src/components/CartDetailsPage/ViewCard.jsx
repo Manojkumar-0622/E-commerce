@@ -3,13 +3,14 @@ import { IoIosCheckmarkCircle } from "react-icons/io";
 import CartContext from '../../context/CartContext';
 import dummyImage from '../CartDetailsPage/dummy.jpg'
 import { IoIosClose } from "react-icons/io";
-
+import { useNavigate } from 'react-router-dom';
 
 
 const ViewCard = () => {
 
     const { cart , SetCart } = useContext(CartContext);
     const [ totalPrice, setTotalPrice] = useState(0);
+    const navigate = useNavigate();
     // const dummyData = [];
 
     // const cartItems = [
@@ -149,7 +150,8 @@ const ViewCard = () => {
                             <div className='text-orange-600'>${totalPrice}</div>
                         </div>
 
-                        <div className='border mt-4 text-center py-3 text-white bg-orange-700 cursor-pointer'>
+                        <div className='border mt-4 text-center py-3 text-white bg-orange-700 cursor-pointer'
+                             onClick={()=> navigate('/checkout')}>
                             PROCEED TO CHECKOUT
                         </div>
                     </div>

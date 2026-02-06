@@ -6,6 +6,7 @@ import { HomePage } from "./pages/HomePage"
 import AllProducts from "./pages/AllProducts"
 import ProductDetailsPage from "./pages/ProductDetailsPage"
 import ViewCard from "./components/CartDetailsPage/ViewCard"
+import CheckOut from "./components/CartDetailsPage/CheckOut"
 
 const App = () => {
 
@@ -15,6 +16,7 @@ const App = () => {
     <Routes>
       <Route path="/login" element={<Login />}/>
       <Route path="/register" element={<Register />}/>
+      <Route path="/checkout" element={<CheckOut />}/>
 
       <Route path="/" element={<Layout />}>
           <Route index 

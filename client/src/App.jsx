@@ -5,6 +5,7 @@ import Layout from "./pages/Layout"
 import { HomePage } from "./pages/HomePage"
 import AllProducts from "./pages/AllProducts"
 import ProductDetailsPage from "./pages/ProductDetailsPage"
+import ViewCard from "./components/CartDetailsPage/ViewCard"
 
 const App = () => {
 
@@ -36,6 +37,8 @@ const App = () => {
 
           <Route path="/contact" 
                  element={<div>Contact Page</div>}/>
+
+          <Route path="/cart" element ={<ViewCard />} />
 
       </Route>
       

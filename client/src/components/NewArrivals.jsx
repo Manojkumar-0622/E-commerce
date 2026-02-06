@@ -18,7 +18,10 @@ const NewArrivals = ({dummayArrival,title}) => {
             if(excisting){
                 return PrevItem.map(item =>(
                     item.id === products.id ?
-                    {...item, quantity : item.quantity + 1}  :
+                    {...item,
+                        quantity : item.quantity + 1,
+                        total : (item.quantity + 1) * item.price
+                    }  :
                     item
                 ));
             }
@@ -31,6 +34,7 @@ const NewArrivals = ({dummayArrival,title}) => {
                         name: products.name,
                         image: products.images[0].normal_img,
                         price: products.price[0].price,
+                        total : products.price[0].price,
                         stock: products.stock,
                         quantity: 1
                     }

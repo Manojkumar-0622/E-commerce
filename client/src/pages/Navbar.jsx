@@ -2,8 +2,13 @@ import { NavLink } from "react-router-dom";
 import { FaSearch, FaUser, FaShoppingCart } from "react-icons/fa";
 import { GoSearch } from "react-icons/go";
 import { VscClose } from "react-icons/vsc";
+import CartOpen from "../components/CartDetailsPage/CartOpen";
 
 const Navbar = ({ SetSearch, search }) => {
+
+
+
+
   const navicateLinks = [
     { name: "Home", path: "/" },
     { name: "Shop", path: "/shop" },
@@ -141,7 +146,7 @@ const Navbar = ({ SetSearch, search }) => {
             </NavLink>
           </div>
 
-          <FaShoppingCart className="size-6 cursor-pointer" />
+          <CartOpen />
         </div>
       </div>
     </div>

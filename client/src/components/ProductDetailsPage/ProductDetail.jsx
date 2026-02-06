@@ -1,10 +1,10 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import { FaStar } from "react-icons/fa";
 import { SlRefresh } from "react-icons/sl";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import { CiHeart } from "react-icons/ci";
-
 import detailsImage from '../ProductDetailsPage/Safecheckout.png';
+import CartContext from '../../context/CartContext';
 
 const ProductDetail = ({ products }) => {
 
@@ -15,6 +15,7 @@ const ProductDetail = ({ products }) => {
     const [imageIndex, setImageIndex] = useState(0);
     const imgRef = useRef(null);
     const [transform, setTransform] = useState("scale(1)");
+    const { cart ,SetCart } = useContext(CartContext);
 
     /* =======================
        SAFE RETURN
@@ -74,6 +75,38 @@ const ProductDetail = ({ products }) => {
 
     const handleMouseLeave = () => {
         setTransform("scale(1)");
+    };
+
+const handleCartProducts = () =>{
+        SetCart(PrevItem => {
+            const excisting = PrevItem.find(item => item.id === products.id);
+
+            if(excisting){
+                return PrevItem.map(item =>(
+                    item.id === products.id ?
+                    {...item,
+                        quantity : item.quantity + 1,
+                        total : (item.quantity + 1) * item.price
+                    }  :
+                    item
+                ));
+            }
+
+            else{
+                return [
+                    ...PrevItem,
+                    {
+                        id: products.id,
+                        name: products.name,
+                        image: products.images[0].normal_img,
+                        price: products.price[0].price,
+                        total : products.price[0].price,
+                        stock: products.stock,
+                        quantity: 1
+                    }
+                ]
+            }
+        })
     };
 
     /* =======================
@@ -171,7 +204,8 @@ const ProductDetail = ({ products }) => {
                         <button onClick={increase} className="px-3 py-1 font-bold border-l">+</button>
                     </div>
 
-                    <div className='border p-2.5 px-4 mt-6 ml-4 bg-orange-600 text-white font-bold cursor-pointer'>
+                    <div className='border p-2.5 px-4 mt-6 ml-4 bg-orange-600 text-white font-bold cursor-pointer'
+                         onClick={()=> handleCartProducts()}>
                         ADD TO CART
                     </div>
                 </div>

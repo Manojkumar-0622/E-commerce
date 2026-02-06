@@ -9,8 +9,8 @@ import CollectionBanner from '../components/CollectionBanner.jsx'
 export const HomePage = () => {
 
   return (
-    <>
-        <MainScreen />
+    <div>
+        <MainScreen/>
         <ShopBySection />
         
         <NewArrivals dummayArrival={newArrival} 
@@ -20,6 +20,6 @@ export const HomePage = () => {
                      title={'Featured Items'}/>
 
         <CollectionBanner />
-    </>
+    </div>
   )
 }

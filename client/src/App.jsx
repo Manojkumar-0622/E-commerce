@@ -7,6 +7,8 @@ import AllProducts from "./pages/AllProducts"
 import ProductDetailsPage from "./pages/ProductDetailsPage"
 import ViewCard from "./components/CartDetailsPage/ViewCard"
 import CheckOut from "./components/CartDetailsPage/CheckOut"
+import FullItems from "./pages/FullItems"
+import ContectPage from "./pages/ContectPage"
 
 const App = () => {
 
@@ -26,7 +28,7 @@ const App = () => {
                  element={<div>Shop Page</div>}/>
 
           <Route path="/products" 
-                 element = {<AllProducts />}/>
+                 element = {<FullItems />}/>
 
           <Route path="/products/:id" 
                  element = {<ProductDetailsPage />}/>
@@ -38,9 +40,11 @@ const App = () => {
                  element={<div>Single Blog</div>}/>
 
           <Route path="/contact" 
-                 element={<div>Contact Page</div>}/>
+                 element={<ContectPage />}/>
 
           <Route path="/cart" element ={<ViewCard />} />
+
+          <Route path="/allitem" element ={<FullItems />} />
 
       </Route>
       
